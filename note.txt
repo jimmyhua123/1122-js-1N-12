@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m "### W02-P2: implement reset button"
+git commit  -m "### W02-P3: implment checkWin(player), and winMessage(player)"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
