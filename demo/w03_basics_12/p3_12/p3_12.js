@@ -1,0 +1,1 @@
+import { sdata,students } from "./data_12";
