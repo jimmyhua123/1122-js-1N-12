@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m "W03-P3: import sdata and students data from data_xx.js"
+git commit  -m "## W03-P4: Compute highest and lowest score of sdata and students2"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
