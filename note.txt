@@ -1,8 +1,8 @@
 git add .
 git status
-git commit  -m "### W04-P1: P4_xx -- Counter Demo"
+git commit  -m " W04-P2: P5_xx -- Tours display two fixed data"
 git push
-git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-06"
+git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-16"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
