@@ -1,10 +1,11 @@
 git add .
 git status
-git commit  -m "## W03-P4: Compute highest and lowest score of sdata and students2"
+git commit  -m "### W04-P1: P4_xx -- Counter Demo"
+git push
+git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-06"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
-git push
-git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-06"
+
 
 sass --watch demo/w16_portfolio_xx/scss:demo/w16_portfolio_xx/css
