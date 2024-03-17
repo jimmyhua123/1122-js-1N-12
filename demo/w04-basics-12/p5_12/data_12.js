@@ -10,7 +10,7 @@ export const tours_12 = [
         id: 2,
         name: "Best of Ireland in 14 Days Tour",
         info:"Rick Steves' Best of Ireland tour kicks off with the best of Dublin,followed by Ireland's must-see historical sites,charming towns, music-filled pubs, and seaside getaways —        including Kinsale, the D...",
-        local_img:'./img/ireland.jpg',
+        local_img:'./img/ireland.jpeg',
         price:3895,
     },
 ];
