@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m " ### W04-P3: P5_xx -- Display 5 tours from data_xx.js (json array)"
+git commit  -m " W04-P4: P6_xx -- BMI Compute with Suggestion"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-16"
 =======
