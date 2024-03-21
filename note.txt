@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m " W05-P1: Use megamenu to show class demo w1~W4 locally"
+git commit  -m " W05-P2: Show W05-P1 in Vercel, add github and globe icons for Github and Vercel"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-21"
 =======
