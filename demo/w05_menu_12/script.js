@@ -1,15 +1,16 @@
 // 改為這樣
 import menu from "./data_12.js";
 
-const sectionCenter = document.querySelector('.section-center');
+const sectionCenter = document.querySelector(".section-center");
+const btnContainer = document.querySelector(".btn-container");
 
+console.log("menu", menu);
 
-console.log('menu',menu);
-
-const displayMenuItems= (menu) =>{
-    let displayMenu = menu.map((item)=>{
-        const{id,title,category,price,img,desc}=item;
-        return `       
+const displayMenuItems = (menu) => {
+  let displayMenu = menu
+    .map((item) => {
+      const { id, title, category, price, img, desc } = item;
+      return `       
          <article class="menu-item">
         <img
           src=${img}
@@ -26,11 +27,26 @@ const displayMenuItems= (menu) =>{
           </p>
         </div>
       </article>`;
-    }).join('');
-    console.log('displayMenu',displayMenu);
-    sectionCenter.innerHTML=displayMenu;
+    })
+    .join("");
+   //console.log("displayMenu", displayMenu);
+  sectionCenter.innerHTML = displayMenu;
 };
 
-window.addEventListener('DOMContentLoaded',()=>{
-    displayMenuItems(menu);
+const category = ["all", "breakfast", "lunch", "dinner", "shakes"];
+
+const displayMenuButtons = (category) => {
+    let displayB = category.map((choose)=>{
+        const{all,breakfast,lunch,dinner,shakes}=choose;
+  return `
+    <button type="button" class="filter-btn" data-id=${choose}>${choose}</button>
+    `;
+    }).join("");
+    console.log("displayB", displayB);
+    btnContainer.innerHTML=displayB;
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+  displayMenuItems(menu);
+  displayMenuButtons(category);
 });

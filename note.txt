@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m " W05-P3: Display Menu Items from menu json array on both local and Vercel"
+git commit  -m " W05-P4: Display Menu buttons from categories array (do it by yourself)"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-21"
 =======
