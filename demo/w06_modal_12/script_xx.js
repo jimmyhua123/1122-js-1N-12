@@ -1,0 +1,36 @@
+const modals = document.querySelectorAll('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelectorAll('.close-modal');
+const btnsOpenModal = document.querySelectorAll('.show-modal');
+console.log('modals', modals);
+console.log('show-modal', btnsOpenModal);
+
+const openModal = (modalId) => {
+  const pModal =document.querySelector(`.${modalId}`);
+  console.log('pModal',pModal);
+  pModal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+
+};
+
+const closeModal = (modalId) => {};
+
+const closeAllModals = () => {
+  modals.forEach((modal) => {});
+};
+
+btnsOpenModal.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const modalId=e.currentTarget.dataset.id;
+    console.log('modalid',modalId);
+    openModal(modalId);
+  });
+});
+
+btnCloseModal.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+
+  });
+});
+
+overlay.addEventListener('click', closeAllModals);
