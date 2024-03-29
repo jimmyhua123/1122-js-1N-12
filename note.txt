@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m "W06-P2: Display Menu buttons from categories array"
+git commit  -m "W06-P3: implement filter buttons"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-03-28"
 =======
