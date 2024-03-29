@@ -9,7 +9,7 @@ console.log("menu", menu);
 const displayMenuItems = (menu) => {
   let displayMenu = menu
     .map((item) => {
-      const { id, title, category, price, img, desc } = item;
+      const { id, title, categories, price, img, desc } = item;
       return `       
          <article class="menu-item">
         <img
@@ -33,10 +33,17 @@ const displayMenuItems = (menu) => {
   sectionCenter.innerHTML = displayMenu;
 };
 
-const category = ["all", "breakfast", "lunch", "dinner", "shakes"];
+// const categories = ["all", "breakfast", "lunch", "dinner", "shakes"];
+  const menuCategories=new Set(menu.map((item)=>{
+return item.category;
+ }));
+console.log('menuCategories',menuCategories);
+ const categories =['all',...menuCategories];
+ console.log('Categories',categories);
 
-const displayMenuButtons = (category) => {
-    let displayB = category.map((choose)=>{
+
+const displayMenuButtons = (categories) => {
+    let displayB = categories.map((choose)=>{
         const{all,breakfast,lunch,dinner,shakes}=choose;
   return `
     <button type="button" class="filter-btn" data-id=${choose}>${choose}</button>
@@ -48,5 +55,5 @@ const displayMenuButtons = (category) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   displayMenuItems(menu);
-  displayMenuButtons(category);
+  displayMenuButtons(categories);
 });
