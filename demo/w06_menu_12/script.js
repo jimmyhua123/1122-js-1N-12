@@ -42,7 +42,7 @@ console.log('menuCategories',menuCategories);
  console.log('Categories',categories);
 
 
-const displayMenuButtons = (categories) => {
+const displayMenuButtons = () => {
     let menuButtons = categories.map((choose)=>{
         const{all,breakfast,lunch,dinner,shakes}=choose;
   return `
