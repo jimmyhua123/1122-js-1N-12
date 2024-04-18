@@ -28,6 +28,15 @@ function showdemo(week) {
       break;
     case "w5":
         p.innerHTML = `<iframe src="./demo/w05_menu_12/index.html" width="100%" height="100%" />`;
-        break;
+      break;
+    case "P1-12":
+        p.innerHTML = `<iframe src="./EXAMS/W09/p1_12/p1_12.html" width="100%" height="100%" />`;
+      break;
+    case "P2-12":
+      p.innerHTML = `<iframe src="./EXAMS/W09/p2_12/p2_12.html" width="100%" height="100%" />`;
+      break;
+    case "P3-12":
+      p.innerHTML = `<iframe src="./EXAMS/W09/p3_12/p3_12.html" width="100%" height="100%" />`;
+      break;
     }
 }
