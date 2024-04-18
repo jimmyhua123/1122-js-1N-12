@@ -12,7 +12,14 @@ export const tours_12 = [
         info:"Rick Steves' Best of Ireland tour kicks off with the best of Dublin,followed by Ireland's must-see historical sites,charming towns, music-filled pubs, and seaside getaways —        including Kinsale, the D...",
         local_img:'./img/ireland.jpeg',
         price:3895,
-    },
+  },
+  {
+    id: 3,
+    name: "Best of Taiwan in 14 Days Tour",
+    info:"Rick Steves' Best of Ireland tour kicks off with the best of Dublin,followed by Ireland's must-see historical sites,charming towns, music-filled pubs, and seaside getaways —        including Kinsale, the D...",
+    local_img:'./img/taiwan.jpg',
+    price:3895,
+},
 ];
 
 export const menu_12 = [
