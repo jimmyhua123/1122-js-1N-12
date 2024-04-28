@@ -7,6 +7,8 @@ CREATE TABLE product_12(
     remote_img varchar(255) 
 )
 
+
+
 INSERT INTO product_12(id,title,price,category,img,remote_img)
 VALUES
 (7,'Albany Sectional',10.99,'Ikea','./images/product-7.jpg',''),
@@ -19,6 +21,9 @@ VALUES
 (2,'Accent Chair',25.99,'Caressa','./images/product-2.jpg','')
 
 
+INSERT INTO product_12(id,title,price,category,img,remote_img)
+VALUES
+(20,'nathan sofa',88.99,'Ikea','./images/product-20.jpg','https://jzdqofyjikkyupsahipb.supabase.co/storage/v1/object/public/demo/1122/7.jpg')
 
 INSERT INTO product_12(id,title,price,category,img,remote_img)
 VALUES
