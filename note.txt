@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m " W10-P2: Get a photo from unsplash, and put it into storage in Supabase"
+git commit  -m " ### W10-P3: Get 9 products data from Supabase, and show in console"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-04-27"
 =======
