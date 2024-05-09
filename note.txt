@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m " ### W10-P3: Get 9 products data from Supabase, and show in console"
+git commit  -m "###  W10-P4: Show products retrieved from Supabase"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-04-27"
 =======
