@@ -1,8 +1,8 @@
 git add .
 git status
-git commit  -m "###  W10-P4: Show products retrieved from Supabase"
+git commit  -m "### W11-P2: Answer p3_xx in mid21"
 git push
-git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-04-27"
+git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-05-08"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
