@@ -1,8 +1,8 @@
 git add .
 git status
-git commit  -m "### W11-P4: Answer for '6-prommise-async-await' "
+git commit  -m "W12-P2: Do 2_add_btn "
 git push
-git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-05-08"
+git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-05-14"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
