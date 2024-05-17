@@ -1,8 +1,8 @@
-git add.
+git add .
 git status
-git commit  -m " W13-P1: Get 3 menu data from /api/data_xx.json"
+git commit  -m " W13-P2: Create 3 menu data from Supabase"
 git push
-git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-05-14"
+git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-05-16"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
