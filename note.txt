@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m "W15-P4: Put w15-demo into project-demo, and make it run correctly"
+git commit  -m "project"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-06-04"
 =======
