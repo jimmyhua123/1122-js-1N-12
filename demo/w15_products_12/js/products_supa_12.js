@@ -6,30 +6,29 @@ let products_xx = [];
 
 const getProductsSupabase_xx = async () => {
   try{
-    let {data,error}= await _supabase.from('product_xx')
-    .select('*');
-    console.log('product data',data);
+    let {data,error}= await _supabase.from('products_xx').select('*');
+    console.log('products data',data);
     return data;
   }catch(error){
     console.log(error);
   }
 };
 const productContainer = document.querySelector(".products-container");
-console.log("products_xx", products_xx);
+console.log("products_12", products_xx);
 
 const displayProducts = (products) => {
   let productsContent =products.map((product)=>{
-    const {name,price,image}=product.fields;
+    const {title,price,localImg}=product;
     // const {id}=product;
     return `
     <div class="single-product">
         <img
-          src=${image}
+          src=${localImg}
           class="single-product-img img"
-          alt=${name}
+          alt=${title}
         />
         <footer>
-          <h3 class="name">${name}</h3>
+          <h3 class="name">${title}</h3>
           <span class="price">$${price}</span>
         </footer>
       </div>

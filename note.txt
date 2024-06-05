@@ -1,8 +1,8 @@
 git add .
 git status
-git commit  -m "W14-P2: Do products_localJson_xx.js to get local json data (/api/productsData.json)"
+git commit  -m "W14-P4: Do products_supa_xx.js to get data from Supabase"
 git push
-git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-06-14"
+git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-06-04"
 =======
 git config --global user.email "212410012@o365.tku.edu.tw"
 git config --global user.name "jimmyhua123"
