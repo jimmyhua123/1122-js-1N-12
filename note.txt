@@ -1,6 +1,6 @@
 git add .
 git status
-git commit  -m "W14-P4: Do products_supa_xx.js to get data from Supabase"
+git commit  -m "W15-P1: Create company (filter) menu using scss"
 git push
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --after="2024-06-04"
 =======
@@ -9,3 +9,4 @@ git config --global user.name "jimmyhua123"
 
 
 sass --watch demo/w16_portfolio_xx/scss:demo/w16_portfolio_xx/css
+$ sass --watch demo/w15_products_12/scss:demo/w15_products_12/css

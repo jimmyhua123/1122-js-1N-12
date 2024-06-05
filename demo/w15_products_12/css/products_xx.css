@@ -70,36 +70,72 @@ body {
 Product
 ===================
 */
-.products-container {
+.main-section {
+  height: 100vh;
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 15fr 85fr;
+}
+.main-section .filter-left {
+  height: 100%;
+  width: 100%;
+}
+.main-section .filter-left .left-content {
+  padding: 2rem 3rem;
+}
+.main-section .filter-left .left-content h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.main-section .filter-left .left-content .company-btn {
+  display: block;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--grey-500);
+  letter-spacing: var(--letterSpacing);
+  cursor: pointer;
+}
+.main-section .filter-left .left-content .company-btn:hover {
+  color: var(--grey-900);
+}
+.main-section .products-right {
+  height: 100%;
+  width: 100%;
+}
+.main-section .products-right .products-container {
   width: 80vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   justify-content: center;
   align-items: center;
-  margin: 3rem auto;
+  margin: 5rem auto;
   gap: 3rem;
 }
-.products-container .single-product {
+.main-section .products-right .products-container .single-product {
   border: 1px solid #a9b6bd;
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-3);
 }
-.products-container .single-product footer {
+.main-section .products-right .products-container .single-product footer {
   padding: 0.75rem 0;
   text-align: center;
 }
-.products-container .single-product footer .name {
+.main-section .products-right .products-container .single-product footer .name {
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
   color: var(--grey-500);
 }
-.products-container .single-product footer .price {
+.main-section .products-right .products-container .single-product footer .price {
   color: var(--grey-700);
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: var(--letterSpacing);
 }
-.products-container .single-product-img {
+.main-section .products-right .products-container .single-product-img {
   display: block;
   width: 100%;
   height: 15rem;
@@ -107,4 +143,4 @@ Product
   border-radius: var(--borderRadius);
 }
 
-/*# sourceMappingURL=p3_xx.css.map */
+/*# sourceMappingURL=products_xx.css.map */
