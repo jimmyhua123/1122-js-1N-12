@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div id="user-info" style="display: none;">
-        <span id="welcome-message"></span>
-        <button id="logout-btn" class="login-btn">Logout</button>
-    </div>
     <button id="login-btn" class="login-btn">Login</button>
     <div style="text-align: center">
         <h1 style="margin: 2rem 0 0 0">Products_12 Supa Demo</h1>
@@ -36,9 +32,12 @@
         </div>
     </section>
 
-    <div style="display: none;" class="container" id="container">
+    <div class="products-container"></div>
+
+    <!-- Login Modal -->
+    <div class="container" id="container">
         <div class="form-container sign-up">
-            <form id="sign-up-form">
+            <form>
                 <h1>Create Account</h1>
                 <span class="close-btn" id="sign-up-close-btn">&times;</span>
                 <div class="social-icons">
@@ -47,14 +46,15 @@
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your email for registration</span>
-                <input type="email" placeholder="Email" id="sign-up-email" required>
-                <input type="password" placeholder="Password" id="sign-up-password" required>
-                <button type="submit">Sign Up</button>
+                <span>or use your email for registeration</span>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form id="sign-in-form">
+            <form>
                 <h1>Sign In</h1>
                 <span class="close-btn" id="sign-in-close-btn">&times;</span>
                 <div class="social-icons">
@@ -63,11 +63,11 @@
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your email and password</span>
-                <input type="email" placeholder="Email" id="sign-in-email" required>
-                <input type="password" placeholder="Password" id="sign-in-password" required>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
                 <a href="#">Forget Your Password?</a>
-                <button type="submit">Sign In</button>
+                <button>Sign In</button>
             </form>
         </div>
         <div class="toggle-container">
@@ -88,5 +88,6 @@
 
     <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script type="module" src="./js/products_supa_12.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

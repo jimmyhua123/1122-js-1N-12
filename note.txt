@@ -10,3 +10,5 @@ git config --global user.name "jimmyhua123"
 
 sass --watch demo/w16_portfolio_xx/scss:demo/w16_portfolio_xx/css
 $ sass --watch demo/w15_products_12/scss:demo/w15_products_12/css
+
+Start pet coding session
