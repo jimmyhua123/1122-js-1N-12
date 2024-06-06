@@ -246,6 +246,14 @@ Product
   z-index: 2;
 }
 
+.sign-in .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .container.active .sign-in {
   transform: translateX(100%);
 }
@@ -255,6 +263,14 @@ Product
   width: 50%;
   opacity: 0;
   z-index: 1;
+}
+
+.sign-up .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .container.active .sign-up {

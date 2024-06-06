@@ -63,6 +63,8 @@ const loginBtn = document.getElementById("login-btn");
 const container = document.getElementById("container");
 const registerBtn = document.getElementById("register");
 const signInBtn = document.getElementById("login");
+const signInCloseBtn = document.getElementById("sign-in-close-btn");
+const signUpCloseBtn = document.getElementById("sign-up-close-btn");
 
 loginBtn.addEventListener("click", () => {
     container.style.display = "block";
@@ -74,6 +76,14 @@ registerBtn.addEventListener('click', () => {
 
 signInBtn.addEventListener('click', () => {
     container.classList.remove("active");
+});
+
+signInCloseBtn.addEventListener('click', () => {
+    container.style.display = "none";
+});
+
+signUpCloseBtn.addEventListener('click', () => {
+    container.style.display = "none";
 });
 
 // 新增登入功能
