@@ -58,13 +58,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     displayProducts(products_12);
 });
 
-// 登入表單的顯示/隱藏邏輯
+// 登入和註冊表單的顯示/隱藏邏輯
 const loginBtn = document.getElementById("login-btn");
 const container = document.getElementById("container");
 const registerBtn = document.getElementById("register");
 const signInBtn = document.getElementById("login");
 const signInCloseBtn = document.getElementById("sign-in-close-btn");
 const signUpCloseBtn = document.getElementById("sign-up-close-btn");
+const userInfo = document.getElementById("user-info");
+const welcomeMessage = document.getElementById("welcome-message");
+const logoutBtn = document.getElementById("logout-btn");
 
 loginBtn.addEventListener("click", () => {
     container.style.display = "block";
@@ -86,25 +89,91 @@ signUpCloseBtn.addEventListener('click', () => {
     container.style.display = "none";
 });
 
-// 新增登入功能
-const loginForm = document.querySelector(".sign-in form");
-loginForm.addEventListener("submit", async (e) => {
+// 檢查電子郵件是否已存在
+const checkEmailExists = async (email) => {
+    const { data, error } = await _supabase
+        .from('auth.users')
+        .select('email')
+        .eq('email', email);
+    if (error) {
+        console.error("Error checking email:", error);
+        return false;
+    }
+    return data.length > 0;
+};
+
+// 新增註冊功能
+const signUpForm = document.getElementById("sign-up-form");
+signUpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = loginForm.querySelector('input[type="email"]').value;
-    const password = loginForm.querySelector('input[type="password"]').value;
+    const email = document.getElementById('sign-up-email').value;
+    const password = document.getElementById('sign-up-password').value;
+
+    const emailExists = await checkEmailExists(email);
+    if (emailExists) {
+        alert('此電子郵件已經註冊過了！');
+        return;
+    }
 
     try {
-        const { user, session, error } = await _supabase.auth.signIn({
+        const { user, error } = await _supabase.auth.signUp({
+            email,
+            password,
+        });
+
+        if (error) throw error;
+        alert('註冊成功！');
+        console.log('User:', user);
+    } catch (error) {
+        if (error.status === 429) {
+            alert('註冊失敗：註冊請求過多，請稍後再試');
+        } else {
+            alert('註冊失敗：' + error.message);
+        }
+        console.log(error);
+    }
+});
+
+// 新增登入功能
+const signInForm = document.getElementById("sign-in-form");
+signInForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('sign-in-email').value;
+    const password = document.getElementById('sign-in-password').value;
+
+    try {
+        const { data, error } = await _supabase.auth.signInWithPassword({
             email,
             password,
         });
 
         if (error) throw error;
         alert('登入成功！');
-        console.log('User:', user);
-        console.log('Session:', session);
+        console.log('User:', data.user);
+
+        // 顯示用戶信息
+        userInfo.style.display = "flex";
+        welcomeMessage.textContent = `歡迎回來, ${data.user.email}`;
+        loginBtn.style.display = "none";
+        container.style.display = "none";
     } catch (error) {
-        alert('登入失敗：' + error.message);
+        if (error.status === 400 || error.status === 401) {
+            alert('登入失敗：無效的登入憑證');
+        } else {
+            alert('登入失敗：' + error.message);
+        }
         console.log(error);
+    }
+});
+
+// 新增登出功能
+logoutBtn.addEventListener("click", async () => {
+    const { error } = await _supabase.auth.signOut();
+    if (error) {
+        console.log("登出失敗：", error.message);
+    } else {
+        alert("已登出！");
+        userInfo.style.display = "none";
+        loginBtn.style.display = "block";
     }
 });

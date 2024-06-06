@@ -15,11 +15,20 @@ const displayProducts = (products) => {
             <footer>
               <h3 class="name">${title}</h3>
               <span class="price">$${price}</span>
+              <button class="add-to-cart-btn">Add to Cart</button>
             </footer>
           </div>
         `;
     }).join("");
     productContainer.innerHTML = productsContent;
+
+    // 為每個 "Add to Cart" 按鈕添加事件監聽器
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    addToCartButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            addToCart(products[index]);
+        });
+    });
 };
 
 const getProductsSupabase_xx = async () => {
@@ -57,6 +66,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     products_12 = await getProductsSupabase_xx();
     displayProducts(products_12);
 });
+
+// 新增 "Add to Cart" 功能
+const addToCart = (product) => {
+    // 移除現有的提示框
+    const existingAlertBox = document.querySelector('.alert-box');
+    if (existingAlertBox) {
+        existingAlertBox.remove();
+    }
+
+    // 創建新的提示框元素
+    const alertBox = document.createElement('div');
+    alertBox.className = 'alert-box';
+    alertBox.textContent = `Added ${product.title} to cart!`;
+
+    // 將提示框元素添加到 body
+    document.body.appendChild(alertBox);
+
+    // 設置定時器，自動移除提示框
+    setTimeout(() => {
+        alertBox.style.opacity = '0';
+        setTimeout(() => alertBox.remove(), 300);
+    }, 3000); // 3秒後自動消失
+
+    // 這裡可以添加將商品加入購物車的邏輯
+    console.log(`Added ${product.title} to cart!`);
+};
+
+// 添加 CSS 樣式
+const style = document.createElement('style');
+style.innerHTML = `
+.alert-box {
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+}
+`;
+document.head.appendChild(style);
 
 // 登入和註冊表單的顯示/隱藏邏輯
 const loginBtn = document.getElementById("login-btn");

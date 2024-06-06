@@ -146,6 +146,7 @@ Product
 /*# sourceMappingURL=products_xx.css.map */
 /* 現有樣式 */
 /* 現有樣式 */
+/* 現有樣式 */
 .login-btn {
   position: fixed;
   top: 10px;
@@ -370,4 +371,35 @@ Product
 
 .container.active .toggle-right {
   transform: translateX(200%);
+}
+
+#user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #512da8;
+  color: #fff;
+  border-radius: 5px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+#welcome-message {
+  margin-right: 10px;
+}
+
+#logout-btn {
+  background-color: #d32f2f;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#logout-btn:hover {
+  background-color: #c62828;
 }
