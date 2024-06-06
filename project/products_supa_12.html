@@ -1,40 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P1_xx</title>
     <link rel="stylesheet" href="./css/products_xx.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <button id="login-btn" class="login-btn">Login</button>
     <div style="text-align: center">
-      <h1 style="margin: 2rem 0 0 0"> Products_12 Supa Demo</h1>
-      <h3 style="margin: 0">華振程, 212410012</h3>
+        <h1 style="margin: 2rem 0 0 0">Products_12 Supa Demo</h1>
+        <h3 style="margin: 0">華振程, 212410012</h3>
     </div>
-  <section class="main-section">
-    <div class="filter-left">
-      <div class="left-content">
-        <h4>Company</h4>
-        <article class="companies">
-          <button class="company-btn" data-id="all">All</button>
-          <button class="company-btn" data-id="Ikea">Ikea</button>
-          <button class="company-btn" data-id="Marcos">Marcos</button>
-          <button class="company-btn" data-id="Caressa">Caressa</button>
-          <button class="company-btn" data-id="Liddy">Liddy</button>
-        </article>
+    <section class="main-section">
+        <div class="filter-left">
+            <div class="left-content">
+                <h4>Company</h4>
+                <article class="companies">
+                    <button class="company-btn" data-id="all">All</button>
+                    <button class="company-btn" data-id="Motherboard">Motherboard</button>
+                    <button class="company-btn" data-id="Power">Power</button>
+                    <button class="company-btn" data-id="Gpu">Gpu</button>
+                    <button class="company-btn" data-id="Ssd">Ssd</button>
+                </article>
+            </div>
+        </div>
+        <div class="products-right">
+            <div class="products-container"></div>
+        </div>
+    </section>
 
-      </div>
-    </div>
-    <div class="products-right">
-      <div class="products-container"></div>
-    </div>
-  </section>
+    <div class="products-container"></div>
 
-    <div class="products-container">
-
+    <!-- Login Modal -->
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registeration</span>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#">Forget Your Password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script type="module" src="./js/products_supa_12.js"></script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
