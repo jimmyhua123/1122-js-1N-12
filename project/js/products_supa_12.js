@@ -11,6 +11,12 @@ const cartItems = document.getElementById("cart-items");
 const clearCartBtn = document.getElementById("clear-cart");
 const cartBtn = document.getElementById("cart-btn");
 const cartCount = document.getElementById("cart-count");
+const checkoutBtn = document.getElementById("checkout-btn");
+const checkoutContainer = document.getElementById("checkout-container");
+const checkoutItems = document.getElementById("checkout-items");
+const checkoutForm = document.getElementById("checkout-form");
+const totalAmount = document.getElementById("total-amount");
+const cancelCheckoutBtn = document.getElementById("cancel-checkout");
 
 const displayProducts = (products) => {
     let productsContent = products.map((product) => {
@@ -185,6 +191,42 @@ const updateCartCount = () => {
     cartCount.textContent = Object.keys(cart).reduce((total, key) => total + cart[key].quantity, 0);
 };
 
+// 顯示購買的商品資訊
+const updateCheckoutItems = () => {
+    checkoutItems.innerHTML = Object.values(cart).map((item) => {
+        return `
+        <li class="checkout-item">
+            ${item.title} - $${item.price} x ${item.quantity}
+        </li>
+        `;
+    }).join("");
+};
+
+// 添加結帳功能
+checkoutBtn.addEventListener("click", () => {
+    const totalPrice = Object.values(cart).reduce((total, item) => total + item.price * item.quantity, 0);
+    totalAmount.textContent = `$${totalPrice}`;
+    updateCheckoutItems();
+    checkoutContainer.style.display = "block";
+    cartContainer.style.display = "none";
+});
+
+// 提交結帳表單
+checkoutForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("訂單已提交！");
+    cart = {};
+    updateCart();
+    updateCartCount(); // 更新購物車數量
+    checkoutContainer.style.display = "none";
+});
+
+// 取消結帳
+cancelCheckoutBtn.addEventListener("click", () => {
+    checkoutContainer.style.display = "none";
+    cartContainer.style.display = "block";
+});
+
 // 添加 CSS 樣式
 const style = document.createElement('style');
 style.innerHTML = `
@@ -269,6 +311,105 @@ style.innerHTML = `
 .clear-cart-btn:hover {
     background-color: #c62828;
 }
+
+.checkout-btn {
+    background-color: #4CAF50; /* 綠色 */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.checkout-btn:hover {
+    background-color: #45a049;
+}
+
+.checkout-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1001;
+}
+
+.checkout-content {
+    display: flex;
+}
+
+.checkout-products {
+    width: 40%;
+    margin-right: 20px;
+}
+
+.checkout-products h3 {
+    margin-bottom: 10px;
+}
+
+.checkout-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checkout-items li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.checkout-form {
+    width: 60%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-btn, .cancel-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 48%;
+    margin: 5px 1%;
+    display: inline-block;
+}
+
+.cancel-btn {
+    background-color: #d32f2f;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.cancel-btn:hover {
+    background-color: #c62828;
+}
+
 .cart-btn {
     position: fixed;
     top: 10px;
