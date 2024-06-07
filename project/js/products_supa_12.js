@@ -225,6 +225,8 @@ checkoutForm.addEventListener("submit", async (e) => {
         quantity: item.quantity
     }));
 
+    console.log({ name, address, phone, email, total_amount: total, items }); // 打印要插入的數據以進行檢查
+
     const { data, error } = await _supabase
         .from('orders')
         .insert([
@@ -242,6 +244,7 @@ checkoutForm.addEventListener("submit", async (e) => {
         checkoutContainer.style.display = "none";
     }
 });
+
 
 // 取消結帳
 cancelCheckoutBtn.addEventListener("click", () => {
