@@ -212,13 +212,35 @@ checkoutBtn.addEventListener("click", () => {
 });
 
 // 提交結帳表單
-checkoutForm.addEventListener("submit", (e) => {
+checkoutForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    alert("訂單已提交！");
-    cart = {};
-    updateCart();
-    updateCartCount(); // 更新購物車數量
-    checkoutContainer.style.display = "none";
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const total = Object.values(cart).reduce((total, item) => total + item.price * item.quantity, 0);
+    const items = Object.values(cart).map(item => ({
+        title: item.title,
+        price: item.price,
+        quantity: item.quantity
+    }));
+
+    const { data, error } = await _supabase
+        .from('orders')
+        .insert([
+            { name, address, phone, email, total_amount: total, items }
+        ]);
+
+    if (error) {
+        console.error("Error inserting order:", error);
+        alert("提交訂單失敗！");
+    } else {
+        alert("訂單已提交！");
+        cart = {};
+        updateCart();
+        updateCartCount(); // 更新購物車數量
+        checkoutContainer.style.display = "none";
+    }
 });
 
 // 取消結帳
