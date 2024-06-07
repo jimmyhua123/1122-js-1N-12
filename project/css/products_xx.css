@@ -473,11 +473,7 @@ Product
   padding: 0;
 }
 
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
+
 
 .clear-cart-btn {
   background-color: #d32f2f;
@@ -491,5 +487,44 @@ Product
 }
 
 .clear-cart-btn:hover {
+  background-color: #c62828;
+}
+
+/* 其他樣式... */
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item div {
+  display: flex;
+  gap: 5px;
+}
+
+.decrease-btn, .increase-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.decrease-btn:hover, .increase-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.remove-btn {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
   background-color: #c62828;
 }

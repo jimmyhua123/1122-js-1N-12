@@ -105,14 +105,35 @@ const addToCart = (product) => {
 
 // 更新購物車顯示
 const updateCart = () => {
-    cartItems.innerHTML = Object.values(cart).map((item, index) => {
+    cartItems.innerHTML = Object.values(cart).map((item) => {
         return `
         <li class="cart-item">
             ${item.title} - $${item.price} x ${item.quantity}
+            <div>
+                <button class="decrease-btn" data-title="${item.title}">-</button>
+                <button class="increase-btn" data-title="${item.title}">+</button>
+            </div>
             <button class="remove-btn" data-title="${item.title}">Remove</button>
         </li>
         `;
     }).join("");
+    
+    const decreaseBtns = document.querySelectorAll('.decrease-btn');
+    decreaseBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const title = e.target.dataset.title;
+            decreaseQuantity(title);
+        });
+    });
+
+    const increaseBtns = document.querySelectorAll('.increase-btn');
+    increaseBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const title = e.target.dataset.title;
+            increaseQuantity(title);
+        });
+    });
+
     const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -122,13 +143,27 @@ const updateCart = () => {
     });
 };
 
-// 移除購物車中的商品
-const removeFromCart = (title) => {
+// 增加商品數量
+const increaseQuantity = (title) => {
+    cart[title].quantity += 1;
+    updateCart();
+    updateCartCount();
+};
+
+// 減少商品數量
+const decreaseQuantity = (title) => {
     if (cart[title].quantity > 1) {
         cart[title].quantity -= 1;
     } else {
         delete cart[title];
     }
+    updateCart();
+    updateCartCount();
+};
+
+// 移除購物車中的商品
+const removeFromCart = (title) => {
+    delete cart[title];
     updateCart();
     updateCartCount(); // 更新購物車數量
 };
@@ -187,8 +222,40 @@ style.innerHTML = `
 .cart-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
 }
+
+.cart-item div {
+    display: flex;
+    gap: 5px;
+}
+
+.decrease-btn, .increase-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.decrease-btn:hover, .increase-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.remove-btn {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #c62828;
+}
+
 .clear-cart-btn {
     background-color: #d32f2f;
     color: #fff;
