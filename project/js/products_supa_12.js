@@ -2,9 +2,14 @@ import { _supabase } from "./clientSupabase_12.js";
 
 // 現有產品相關的程式碼
 let products_12 = [];
+let cart = [];
 
 const productContainer = document.querySelector(".products-container");
 const companyBtns = document.querySelectorAll(".company-btn");
+const cartContainer = document.getElementById("cart-container");
+const cartItems = document.getElementById("cart-items");
+const clearCartBtn = document.getElementById("clear-cart");
+const cartBtn = document.getElementById("cart-btn");
 
 const displayProducts = (products) => {
     let productsContent = products.map((product) => {
@@ -89,9 +94,42 @@ const addToCart = (product) => {
         setTimeout(() => alertBox.remove(), 300);
     }, 3000); // 3秒後自動消失
 
-    // 這裡可以添加將商品加入購物車的邏輯
+    // 添加商品到購物車
+    cart.push(product);
+    updateCart();
+
     console.log(`Added ${product.title} to cart!`);
 };
+
+// 更新購物車顯示
+const updateCart = () => {
+    cartItems.innerHTML = cart.map((item, index) => {
+        return `
+        <li class="cart-item">
+            ${item.title} - $${item.price}
+            <button onclick="removeFromCart(${index})">Remove</button>
+        </li>
+        `;
+    }).join("");
+    cartContainer.style.display = cart.length > 0 ? "block" : "none";
+};
+
+// 移除購物車中的商品
+const removeFromCart = (index) => {
+    cart.splice(index, 1);
+    updateCart();
+};
+
+// 清空購物車
+clearCartBtn.addEventListener("click", () => {
+    cart = [];
+    updateCart();
+});
+
+// 顯示和隱藏購物車
+cartBtn.addEventListener("click", () => {
+    cartContainer.style.display = cartContainer.style.display === "block" ? "none" : "block";
+});
 
 // 添加 CSS 樣式
 const style = document.createElement('style');
@@ -107,6 +145,43 @@ style.innerHTML = `
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: opacity 0.3s ease-in-out;
+}
+.cart-container {
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    width: 300px;
+    max-height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 20px;
+    display: none;
+}
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.clear-cart-btn {
+    background-color: #d32f2f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+.clear-cart-btn:hover {
+    background-color: #c62828;
 }
 `;
 document.head.appendChild(style);

@@ -450,3 +450,46 @@ Product
 }
 
 /* 其他現有樣式... */
+/* 現有樣式... */
+
+.cart-container {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  width: 300px;
+  max-height: 400px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 20px;
+  display: none;
+}
+
+.cart-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.clear-cart-btn {
+  background-color: #d32f2f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.clear-cart-btn:hover {
+  background-color: #c62828;
+}
