@@ -2,7 +2,7 @@ import { _supabase } from "./clientSupabase_12.js";
 
 // 現有產品相關的程式碼
 let products_12 = [];
-let cart = [];
+let cart = {};
 
 const productContainer = document.querySelector(".products-container");
 const companyBtns = document.querySelectorAll(".company-btn");
@@ -10,6 +10,7 @@ const cartContainer = document.getElementById("cart-container");
 const cartItems = document.getElementById("cart-items");
 const clearCartBtn = document.getElementById("clear-cart");
 const cartBtn = document.getElementById("cart-btn");
+const cartCount = document.getElementById("cart-count");
 
 const displayProducts = (products) => {
     let productsContent = products.map((product) => {
@@ -70,73 +71,84 @@ companyBtns.forEach((btn) => {
 document.addEventListener("DOMContentLoaded", async () => {
     products_12 = await getProductsSupabase_xx();
     displayProducts(products_12);
+    updateCartCount(); // 初始化購物車數量
 });
 
 // 新增 "Add to Cart" 功能
 const addToCart = (product) => {
-    // 移除現有的提示框
     const existingAlertBox = document.querySelector('.alert-box');
     if (existingAlertBox) {
         existingAlertBox.remove();
     }
 
-    // 創建新的提示框元素
     const alertBox = document.createElement('div');
     alertBox.className = 'alert-box';
     alertBox.textContent = `Added ${product.title} to cart!`;
-
-    // 將提示框元素添加到 body
     document.body.appendChild(alertBox);
 
-    // 設置定時器，自動移除提示框
     setTimeout(() => {
         alertBox.style.opacity = '0';
         setTimeout(() => alertBox.remove(), 300);
     }, 3000); // 3秒後自動消失
 
     // 添加商品到購物車
-    cart.push(product);
+    if (cart[product.title]) {
+        cart[product.title].quantity += 1;
+    } else {
+        cart[product.title] = { ...product, quantity: 1 };
+    }
     updateCart();
+    updateCartCount(); // 更新購物車數量
 
     console.log(`Added ${product.title} to cart!`);
 };
 
 // 更新購物車顯示
 const updateCart = () => {
-    cartItems.innerHTML = cart.map((item, index) => {
+    cartItems.innerHTML = Object.values(cart).map((item, index) => {
         return `
         <li class="cart-item">
-            ${item.title} - $${item.price}
-            <button class="remove-btn" data-index="${index}">Remove</button>
+            ${item.title} - $${item.price} x ${item.quantity}
+            <button class="remove-btn" data-title="${item.title}">Remove</button>
         </li>
         `;
     }).join("");
-    // 綁定每個 "Remove" 按鈕的點擊事件
     const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            const index = e.target.dataset.index;
-            removeFromCart(index);
+            const title = e.target.dataset.title;
+            removeFromCart(title);
         });
     });
 };
 
 // 移除購物車中的商品
-const removeFromCart = (index) => {
-    cart.splice(index, 1);
+const removeFromCart = (title) => {
+    if (cart[title].quantity > 1) {
+        cart[title].quantity -= 1;
+    } else {
+        delete cart[title];
+    }
     updateCart();
+    updateCartCount(); // 更新購物車數量
 };
 
 // 清空購物車
 clearCartBtn.addEventListener("click", () => {
-    cart = [];
+    cart = {};
     updateCart();
+    updateCartCount(); // 更新購物車數量
 });
 
 // 顯示和隱藏購物車
 cartBtn.addEventListener("click", () => {
-    cartContainer.style.display = cartContainer.style.display === "block" ? "none" : "block";
+    cartContainer.style.display = cartContainer.style.display === "none" || cartContainer.style.display === "" ? "block" : "none";
 });
+
+// 更新購物車商品數量
+const updateCartCount = () => {
+    cartCount.textContent = Object.keys(cart).reduce((total, key) => total + cart[key].quantity, 0);
+};
 
 // 添加 CSS 樣式
 const style = document.createElement('style');
@@ -189,6 +201,31 @@ style.innerHTML = `
 }
 .clear-cart-btn:hover {
     background-color: #c62828;
+}
+.cart-btn {
+    position: fixed;
+    top: 10px;
+    left: 100px; /* 避免和用戶信息重疊 */
+    padding: 10px 20px;
+    background-color: #ff6347; /* 番茄紅 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.cart-btn:hover {
+    background-color: #ff4500; /* 橙紅色 */
+}
+
+#cart-count {
+    background-color: #d32f2f;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    margin-left: 10px;
 }
 `;
 document.head.appendChild(style);
