@@ -107,11 +107,18 @@ const updateCart = () => {
         return `
         <li class="cart-item">
             ${item.title} - $${item.price}
-            <button onclick="removeFromCart(${index})">Remove</button>
+            <button class="remove-btn" data-index="${index}">Remove</button>
         </li>
         `;
     }).join("");
-    cartContainer.style.display = cart.length > 0 ? "block" : "none";
+    // 綁定每個 "Remove" 按鈕的點擊事件
+    const removeBtns = document.querySelectorAll('.remove-btn');
+    removeBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.dataset.index;
+            removeFromCart(index);
+        });
+    });
 };
 
 // 移除購物車中的商品
