@@ -1,9 +1,10 @@
 import { _supabase } from "./clientSupabase_12.js";
 
-// 現有產品相關的程式碼
+// 初始化產品數組和購物車對象
 let products_12 = [];
 let cart = {};
 
+// 獲取 DOM 元素
 const productContainer = document.querySelector(".products-container");
 const companyBtns = document.querySelectorAll(".company-btn");
 const cartContainer = document.getElementById("cart-container");
@@ -18,6 +19,7 @@ const checkoutForm = document.getElementById("checkout-form");
 const totalAmount = document.getElementById("total-amount");
 const cancelCheckoutBtn = document.getElementById("cancel-checkout");
 
+// 顯示產品列表
 const displayProducts = (products) => {
     let productsContent = products.map((product) => {
         const { title, price, remoteImg } = product;
@@ -43,6 +45,7 @@ const displayProducts = (products) => {
     });
 };
 
+// 從 Supabase 獲取產品數據
 const getProductsSupabase_xx = async () => {
     try {
         let { data, error } = await _supabase
@@ -55,6 +58,7 @@ const getProductsSupabase_xx = async () => {
     }
 };
 
+// 設置分類按鈕的事件監聽器
 companyBtns.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
         const companyName = e.currentTarget.dataset.id;
@@ -74,6 +78,7 @@ companyBtns.forEach((btn) => {
     });
 });
 
+// DOM 加載完成後顯示所有產品
 document.addEventListener("DOMContentLoaded", async () => {
     products_12 = await getProductsSupabase_xx();
     displayProducts(products_12);
@@ -82,16 +87,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // 新增 "Add to Cart" 功能
 const addToCart = (product) => {
+    // 移除現有的提示框
     const existingAlertBox = document.querySelector('.alert-box');
     if (existingAlertBox) {
         existingAlertBox.remove();
     }
 
+    // 創建新的提示框元素
     const alertBox = document.createElement('div');
     alertBox.className = 'alert-box';
     alertBox.textContent = `Added ${product.title} to cart!`;
     document.body.appendChild(alertBox);
 
+    // 設置定時器，自動移除提示框
     setTimeout(() => {
         alertBox.style.opacity = '0';
         setTimeout(() => alertBox.remove(), 300);
@@ -124,6 +132,7 @@ const updateCart = () => {
         `;
     }).join("");
     
+    // 綁定每個 "Decrease" 按鈕的點擊事件
     const decreaseBtns = document.querySelectorAll('.decrease-btn');
     decreaseBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -132,6 +141,7 @@ const updateCart = () => {
         });
     });
 
+    // 綁定每個 "Increase" 按鈕的點擊事件
     const increaseBtns = document.querySelectorAll('.increase-btn');
     increaseBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -140,6 +150,7 @@ const updateCart = () => {
         });
     });
 
+    // 綁定每個 "Remove" 按鈕的點擊事件
     const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -244,7 +255,6 @@ checkoutForm.addEventListener("submit", async (e) => {
         checkoutContainer.style.display = "none";
     }
 });
-
 
 // 取消結帳
 cancelCheckoutBtn.addEventListener("click", () => {

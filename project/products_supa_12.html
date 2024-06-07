@@ -5,24 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products_12 Supa Demo</title>
+    <!-- 引入 CSS 文件 -->
     <link rel="stylesheet" href="./css/products_xx.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+    <!-- 用戶信息區域，包含登出按鈕和歡迎信息 -->
     <div id="user-info" style="display: none;">
         <button id="logout-btn" class="login-btn">Logout</button>
         <span id="welcome-message"></span>
     </div>
+    <!-- 登入按鈕 -->
     <button id="login-btn" class="login-btn">Login</button>
+    <!-- 購物車按鈕，包含商品數量提示 -->
     <button id="cart-btn" class="cart-btn">Cart<span id="cart-count">0</span></button>
+    <!-- 頁面標題 -->
     <div style="text-align: center">
         <h1 style="margin: 2rem 0 0 0">Products_12 Supa Demo</h1>
         <h3 style="margin: 0">華振程, 212410012</h3>
     </div>
+    <!-- 產品和分類區域 -->
     <section class="main-section">
         <div class="filter-left">
             <div class="left-content">
                 <h4>Category</h4>
+                <!-- 分類按鈕 -->
                 <article class="companies">
                     <button class="company-btn" data-id="all">All</button>
                     <button class="company-btn" data-id="Motherboard">Motherboard</button>
@@ -37,7 +44,9 @@
         </div>
     </section>
 
+    <!-- 註冊和登入表單容器 -->
     <div style="display: none;" class="container" id="container">
+        <!-- 註冊表單 -->
         <div class="form-container sign-up">
             <form id="sign-up-form">
                 <h1>Create Account</h1>
@@ -54,6 +63,7 @@
                 <button type="submit">Sign Up</button>
             </form>
         </div>
+        <!-- 登入表單 -->
         <div class="form-container sign-in">
             <form id="sign-in-form">
                 <h1>Sign In</h1>
@@ -71,6 +81,7 @@
                 <button type="submit">Sign In</button>
             </form>
         </div>
+        <!-- 切換表單的容器 -->
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
@@ -87,6 +98,7 @@
         </div>
     </div>
 
+    <!-- 購物車容器 -->
     <div id="cart-container" class="cart-container" style="display: none;">
         <h2>購物車</h2>
         <ul id="cart-items" class="cart-items"></ul>
@@ -94,6 +106,7 @@
         <button id="checkout-btn" class="checkout-btn">結帳</button>
     </div>
     
+    <!-- 結帳容器 -->
     <div id="checkout-container" class="checkout-container" style="display: none;">
         <h2>結帳</h2>
         <div class="checkout-content">
@@ -102,6 +115,7 @@
                 <ul id="checkout-items" class="checkout-items"></ul>
                 <h3>訂單總額: <span id="total-amount">$0</span></h3>
             </div>
+            <!-- 結帳表單 -->
             <form id="checkout-form" class="checkout-form">
                 <div class="form-group">
                     <label for="name">姓名</label>
@@ -125,6 +139,7 @@
         </div>
     </div>
     
+    <!-- 引入 JavaScript 文件 -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script type="module" src="./js/products_supa_12.js"></script>
 </body>
